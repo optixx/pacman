@@ -1,0 +1,9 @@
+run
+-ifn ../../build/scripts/pacman.prj
+-ifmt VHDL
+-ofn ../../build/obj/pacman.ngc
+-ofmt NGC -p xc3s1200e-fg320-4
+-opt_mode Area
+-opt_level 1
+-top pacman
+-keep_hierarchy yes

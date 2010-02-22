@@ -1,0 +1,66 @@
+CONFIG PART = XC3S1200E-FG320-4 ;
+
+NET I_CLK_REF TNM_NET = clk_ref_grp;
+TIMESPEC TS01 = PERIOD : clk_ref_grp : 20.00 : PRIORITY 1;   # 50.00 MHz
+
+TIMESPEC TS11=FROM:PADS:TO:FFS : 30 ns;
+TIMESPEC TS12=FROM:FFS:TO:PADS : 30 ns;
+
+
+# original bits
+#NET O_VIDEO_R(3)                LOC = "C8" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+NET O_VIDEO_R(2)                LOC = "R8" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io27 fx2 pin32
+NET O_VIDEO_R(1)                LOC = "T8" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io29 fx2 pin34
+NET O_VIDEO_R(0)                LOC = "R9" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io31 fx2 pin36
+
+#NET O_VIDEO_G(3)                LOC = "D6" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+NET O_VIDEO_G(2)                LOC = "P6" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io21 fx2 pin26
+NET O_VIDEO_G(1)                LOC = "P8" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io23 fx2 pin28
+NET O_VIDEO_G(0)                LOC = "N8" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io25 fx2 pin30
+
+#NET O_VIDEO_B(3)                LOC = "C9" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+#NET O_VIDEO_B(2)                LOC = "B9" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io1 fx2 pin6
+NET O_VIDEO_B(1)                LOC = "U4" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io3 fx2 pin8
+NET O_VIDEO_B(0)                LOC = "U5" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ; # io5 fx2 pin10
+
+NET O_HSYNC                     LOC = "T4" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+NET O_VSYNC                     LOC = "U3" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+
+NET I_SW(3)                     LOC = "K17" | IOSTANDARD = LVTTL; # | PULLUP;
+NET I_SW(2)                     LOC = "K18" | IOSTANDARD = LVTTL; # | PULLUP;
+NET I_SW(1)                     LOC = "H18" | IOSTANDARD = LVTTL; # | PULLUP;
+NET I_SW(0)                     LOC = "G18" | IOSTANDARD = LVTTL; # | PULLUP;
+
+#NET "I_BUTTON(0)"               LOC = "L14" | IOSTANDARD = LVTTL; # | PULLUP ; # up
+#NET "I_BUTTON(2)"               LOC = "D18" | IOSTANDARD = LVTTL; # | PULLUP ; # down
+#NET "I_BUTTON(3)"               LOC = "E18" | IOSTANDARD = LVTTL; # | PULLUP ; # right
+#NET "I_BUTTON(1)"               LOC = "H13" | IOSTANDARD = LVTTL; # | PULLUP ; # left
+
+#in0_reg(3) <= button_debounced(1); -- p1 down
+#in0_reg(2) <= button_debounced(3); -- p1 right
+#in0_reg(1) <= button_debounced(2); -- p1 left
+#in0_reg(0) <= button_debounced(0); -- p1 up
+
+#NET "I_BUTTON(3)"               LOC = "L17" | IOSTANDARD = LVTTL | PULLUP ; # right
+#NET "I_BUTTON(2)"               LOC = "K12" | IOSTANDARD = LVTTL | PULLUP ; # down
+#NET "I_BUTTON(1)"               LOC = "M15" | IOSTANDARD = LVTTL | PULLUP ; # left
+#NET "I_BUTTON(0)"               LOC = "L15" | IOSTANDARD = LVTTL | PULLUP ; # up
+
+NET "I_BUTTON(3)"               LOC = "K12" | IOSTANDARD = LVTTL | PULLUP ; # right
+NET "I_BUTTON(2)"               LOC = "L17" | IOSTANDARD = LVTTL | PULLUP ; # down
+NET "I_BUTTON(1)"               LOC = "M15" | IOSTANDARD = LVTTL | PULLUP ; # left
+NET "I_BUTTON(0)"               LOC = "L15" | IOSTANDARD = LVTTL | PULLUP ; # up
+
+
+
+NET O_LED(3)                    LOC = "K14" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+NET O_LED(2)                    LOC = "K15" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+NET O_LED(1)                    LOC = "J15" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+NET O_LED(0)                    LOC = "J14" | IOSTANDARD = LVTTL | DRIVE = 8 | SLEW = FAST ;
+
+NET I_RESET                     LOC = "B18" | IOSTANDARD = LVTTL ;#| PULLDOWN ; # use first button 
+NET I_CLK_REF                   LOC = "B8"  | IOSTANDARD = LVCMOS33;
+
+# not used, mapped to dummy
+NET O_AUDIO_L                   LOC = "K13"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8;
+NET O_AUDIO_R                   LOC = "L16"  | IOSTANDARD = LVTTL | SLEW = SLOW | DRIVE = 8;
