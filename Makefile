@@ -2,7 +2,7 @@ OBJDIR = build/obj
 PROJECTROOT = $(shell pwd)
 
 TARGET = pacman
-TARGETFPGA = xc3s1200e-fg320-4
+TARGETFPGA = XC3S1200E-4FG320
 BOARD = nexys2
 FLASHTOOL= nexys2prog 
 
@@ -66,11 +66,12 @@ $(TARGET).bit: buildrom synthesize map placeandroute trace
 	cd $(OBJDIR); $(BITGEN) -w $(TARGET).ncd $@ -f $ $(PROJECTROOT)/$(UTFILE)
 	mv $(OBJDIR)/$@ $(PROJECTROOT)
 
-upload: $(TARGET).bit 
-	$(FLASHTOOL) $(TARGET).bit  
+upload: 
+	$(FLASHTOOL) -v $(TARGET).bit  
 clean:
 	rm -rf $(OBJDIR)/*
 	rm -rf $(TARGET).bit
-
+	rm -rf $(TARGET).svf
+	rm -rf _impact*
 .PHONY: all clean
 
