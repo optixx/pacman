@@ -2,7 +2,8 @@ OBJDIR = build/obj
 PROJECTROOT = $(shell pwd)
 
 TARGET = pacman
-TARGETFPGA = XC3S1200E-4FG320
+TARGETFPGA = xc3s1200e-fg320-4
+
 BOARD = nexys2
 FLASHTOOL= nexys2prog 
 

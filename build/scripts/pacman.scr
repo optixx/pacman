@@ -3,7 +3,7 @@ run
 -ifmt VHDL
 -ofn ../../build/obj/pacman.ngc
 -ofmt NGC 
--p XC3S1200E-4FG320
+-p xc3s1200e-fg320-4
 -opt_mode Area
 -opt_level 1
 -top pacman
